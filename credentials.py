@@ -9,3 +9,6 @@ class Credentials:
         self.account = account
         self.username = username
         self.password = password
+
+
+       
