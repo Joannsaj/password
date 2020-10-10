@@ -31,9 +31,9 @@ class TestCredentials(unittest.TestCase):
     def test_save_credentials(self):
         '''
         test_save_credentials test case to test if the credentials object is saved into
-        the credentials list
+         the credentials list
         '''
-        self.new_credentials.test_save_credentials() # saving the new credentials
+        self.new_credentials.save_credentials() # saving the new credentials
         self.assertEqual(len(Credentials.credentials_list),1)
 
 if __name__ == '__main__':
