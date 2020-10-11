@@ -78,7 +78,7 @@ class TestCredentials(unittest.TestCase):
 
         found_credentials = Credentials.find_by_account("Gmail")
 
-        self.assertEqual(found_credentials.email,test_credentials.email)
+        self.assertEqual(found_credentials.username,test_credentials.username)
 
 
     def test_display_all_credentials(self):
