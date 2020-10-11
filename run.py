@@ -131,7 +131,22 @@ def main():
                     save_credentials(create_credentials(account, username, password)) 
                     print ('\n')
                     print(f"For {account} username '{username}' and password '{password}'.")
-                    print ('\n')    
+                    print ('\n')   
+
+                elif short_code == 'dc':
+
+                    if display_credentials():
+                        print("These are the credentials for your various accounts")
+                        print('\n')
+
+                        for credentials in display_credentials():
+                            print(f"{credentials.account} ...... {credentials.username} -- {credentials.password}")
+
+                        print('\n')
+                    else:
+                        print('\n')
+                        print("No credentials found")
+                        print('\n') 
 
 if __name__ == '__main__':
 
