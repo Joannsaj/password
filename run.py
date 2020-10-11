@@ -42,7 +42,7 @@ def save_credentials(credentials):
     '''
     Function to save credentials
     '''
-    contact.save_credentials()
+    credentials.save_credentials()
 
 def del_credentials(credentials):
     '''
@@ -60,7 +60,7 @@ def display_credentials():
     '''
     Function that returns all the saved credentials
     '''
-    return Contact.display_credentials()
+    return Credentials.display_credentials()
 
 
 def main():
@@ -101,7 +101,7 @@ def main():
             search_password = input()
 
             if authentic(search_username , search_password):
-                search_user = authentic_user(search_username , search_password)
+                search_user = authentic(search_username , search_password)
                 print(f"{search_user.username} {search_user.password}")
                 print('-' * 20)
 
@@ -112,41 +112,57 @@ def main():
             print("Please enter a valid code")
 
 
-            while True:
-                print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
+        
+        print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
 
-                if short_code == 'ac':
-                    print("New Credentials")
-                    print("-"*10)
+        if short_code == 'ac':
+            print("New Credentials")
+            print("-"*10)
 
-                    print ("Enter account eg.Gmail")
-                    account = input()
+            print ("Enter account eg.Gmail")
+            account = input()
  
-                    print("Enter username")
-                    username = input()
+            print("Enter username")
+            username = input()
 
-                    print("Enter account password")
-                    password = input()
+            print("Enter account password")
+            password = input()
 
-                    save_credentials(create_credentials(account, username, password)) 
-                    print ('\n')
-                    print(f"For {account} username '{username}' and password '{password}'.")
-                    print ('\n')   
+            save_credentials(create_credentials(account, username, password)) 
+            print ('\n')
+            print(f"For {account} username '{username}' and password '{password}'.")
+            print ('\n')   
 
-                elif short_code == 'dc':
+        elif short_code == 'dc':
 
-                    if display_credentials():
-                        print("These are the credentials for your various accounts")
-                        print('\n')
+            if display_credentials():
+                print("These are the credentials for your various accounts")
+                print('\n')
 
-                        for credentials in display_credentials():
-                            print(f"{credentials.account} ...... {credentials.username} -- {credentials.password}")
+                for credentials in display_credentials():
+                    print(f"{credentials.account} ...... {credentials.username} -- {credentials.password}")
 
-                        print('\n')
-                    else:
-                        print('\n')
-                        print("No credentials found")
-                        print('\n') 
+                print('\n')
+            else:
+                print('\n')
+                print("No credentials found")
+                print('\n') 
+
+
+        elif short_code == 'fa':
+
+            print("Enter the account you want to search for")
+
+            search_account = input()
+            if find_credentials(search_account):
+                search_account = find_by_account(search_account)
+                
+                print('-' * 20)
+                print(f"Account----{search_account.account}")
+                print(f"Username----{search_account.username}")
+                print(f"Password----{search_account.password}")
+            else:
+                print("That account does not exist")        
 
 if __name__ == '__main__':
 
