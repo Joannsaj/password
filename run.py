@@ -74,8 +74,42 @@ def main():
     print('\n')
     print("Use these short codes: su - To sign up, li - To login,")
 
+    while True:
+        short_code = input().lower()
 
+        if short_code == 'su':
+            print("Sign up")
+            print("-"*10)
 
+            print("Enter a username")
+            username = input()
+
+            print("Enter a password")
+            password = input()
+
+   
+            save_user(create_user(username, password)) # create and save new user
+            print ('\n')
+            print(f"New User '{username}' created")
+            print ('\n')
+
+        elif short_code == 'li': 
+            print("Enter your username")
+            search_username = input()
+
+            print("Enter your password")
+            search_password = input()
+
+            if authentic(search_username , search_password):
+                search_user = authentic_user(search_username , search_password)
+                print(f"{search_user.username} {search_user.password}")
+                print('-' * 20)
+
+            else:
+                print("That user does not exist")
+   
+        else:
+            print("Please enter a valid code")
 
 if __name__ == '__main__':
 

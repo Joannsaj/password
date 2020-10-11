@@ -29,7 +29,7 @@ class User:
 
 
     @classmethod
-    def authentic(cls):
+    def authentic(cls,username,password):
 
         for user in cls.user_list:
             if user.username == username & user.password == password:
