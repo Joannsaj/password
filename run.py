@@ -155,14 +155,27 @@ def main():
 
             search_account = input()
             if find_credentials(search_account):
-                search_account = find_by_account(search_account)
+                search_accounts = find_by_account(search_account)
                 
                 print('-' * 20)
-                print(f"Account----{search_account.account}")
-                print(f"Username----{search_account.username}")
-                print(f"Password----{search_account.password}")
+                print(f"Account----{search_accounts.account}")
+                print(f"Username----{search_accounts.username}")
+                print(f"Password----{search_accounts.password}")
             else:
-                print("That account does not exist")        
+                print("That account does not exist")      
+
+
+        elif short_code == "de":
+            print("Enter the account of the Credentials you want to delete")
+            search_account = input().
+            if find_credentials(search_account):
+                search_credential = find_by_account(search_account)
+                search_credential.del_credentials()
+                print('\n')
+                print(f"{search_credential.account} has been deleted successfully")
+                print('\n')
+            else:
+                print("That account does not exist")          
 
 if __name__ == '__main__':
 
