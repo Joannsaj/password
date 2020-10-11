@@ -111,6 +111,28 @@ def main():
         else:
             print("Please enter a valid code")
 
+
+            while True:
+                print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
+
+                if short_code == 'ac':
+                    print("New Credentials")
+                    print("-"*10)
+
+                    print ("Enter account eg.Gmail")
+                    account = input()
+ 
+                    print("Enter username")
+                    username = input()
+
+                    print("Enter account password")
+                    password = input()
+
+                    save_credentials(create_credentials(account, username, password)) 
+                    print ('\n')
+                    print(f"For {account} username '{username}' and password '{password}'.")
+                    print ('\n')    
+
 if __name__ == '__main__':
 
     main()        
