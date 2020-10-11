@@ -28,4 +28,9 @@ class User:
         User.user_list.remove(self)   
 
 
-    def
+    @classmethod
+    def authentic(cls):
+
+        for user in cls.user_list:
+            if user.username == username && user.password == password:
+                return user
