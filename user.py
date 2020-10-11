@@ -1,7 +1,7 @@
 class User:
-    """
+    '''
     Class that generates new instances of users.
-    """
+    '''
 
     user_list = [] #empty user list
     def __init__(self,username,password):
@@ -26,3 +26,6 @@ class User:
         '''
 
         User.user_list.remove(self)   
+
+
+    def
