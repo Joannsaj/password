@@ -32,5 +32,5 @@ class User:
     def authentic(cls):
 
         for user in cls.user_list:
-            if user.username == username && user.password == password:
+            if user.username == username & user.password == password:
                 return user
