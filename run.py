@@ -3,6 +3,7 @@
 from user import User
 from credentials import Credentials
 import random
+import string
 
 def create_user(username , password):
     '''
@@ -63,6 +64,15 @@ def display_credentials():
     return Credentials.display_credentials()
 
 
+def random_password(size):  
+        
+    # Takes random choices from  
+    # ascii_letters and digits  
+    generate_password = ''.join([random.choice(  string.ascii_lowercase + string.digits) for n in range(size)])  
+                            
+    return generate_password 
+    
+
 def main():
     print("LOCKER")
     print("A secure place to store your passwords")
@@ -72,10 +82,10 @@ def main():
 
     print(f"Hello {name}, login or sign up to use this application")
     print('\n')
-    
+    print("Use these short codes: su - To sign up, li - To login,")
 
     while True:
-        print("Use these short codes: su - To sign up, li - To login,")
+        
         short_code = input().lower()
 
         if short_code == 'su':
@@ -93,6 +103,8 @@ def main():
             print ('\n')
             print(f"New User '{username}' created")
             print ('\n')
+            print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
+            print ('\n')
 
         elif short_code == 'li': 
             print("Enter your username")
@@ -105,18 +117,13 @@ def main():
                 search_user = authentic(search_username , search_password)
                 print(f"{search_user.username} {search_user.password}")
                 print('-' * 20)
+                print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
 
             else:
-                print("That user does not exist")
+                print("That user does not exist, try again")
    
-        # else:
-        #     print("Please enter a valid code")
-
-
-        
-        print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
-
-        if short_code == 'ac':
+#credentials
+        elif short_code == 'ac':
             print("New Credentials")
             print("-"*10)
 
@@ -127,12 +134,28 @@ def main():
             username = input()
 
             print("Enter account password")
-            password = input()
-
+            print("Would you like a random password?")
+            print("y - yes , n - no,I'd prefer my own")
+            code = input().lower()
+            if code == 'y':
+                password = random_password(8)
+                print(password)
+                
+            elif code == 'n':
+                print("Type a password")
+                password = input()
+                
+            else:
+                print("Enter 'y' or 'n'")   
+       
             save_credentials(create_credentials(account, username, password)) 
             print ('\n')
             print(f"For {account} username '{username}' and password '{password}'.")
             print ('\n')   
+            print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
+
+    
+
 
         elif short_code == 'dc':
 
@@ -147,7 +170,8 @@ def main():
             else:
                 print('\n')
                 print("No credentials found")
-                print('\n') 
+            print('\n') 
+            print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
 
 
         elif short_code == 'fa':
@@ -163,7 +187,10 @@ def main():
                 print(f"Username----{search_accounts.username}")
                 print(f"Password----{search_accounts.password}")
             else:
-                print("That account does not exist")      
+                print("That account does not exist") 
+            print ('\n')
+     
+            print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
 
 
         elif short_code == "de":
@@ -178,6 +205,9 @@ def main():
                 print('\n')
             else:
                 print("That account does not exist")  
+            print ('\n')
+            
+            print("Use these short codes: ac - add credentials, dc - display_credentials, fa - find credentials to an account, de - delete credentials, ex - exit credentials list")
 
 
         elif short_code == "ex":
@@ -185,7 +215,7 @@ def main():
             break
 
         else:
-            print("Please use the short codes")                 
+            print("Please use valid short codes")                 
 
 if __name__ == '__main__':
 
